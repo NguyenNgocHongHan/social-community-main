@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #7343D6;
+    background-size: contain;
+}
+
+.container {
+    text-align: center;
+    height: auto;
+    position: relative;
+    background: #fff;
+    border-radius: 1rem;
+    width: 80%;
+}
+
+h1 {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin: 0;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.platform {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 350px;
+    display: inline-block;
+}
+
+.platform-left-top {
+    display: inline-block;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.platform-left-bottom {
+    display: inline-block;
+    /* color: #fff;
+    background-color: #7343D6; */
+}
+
+.btn-reload {
+    cursor: pointer;
+    border-radius: 5rem;
+    font-size: medium;
+    padding: 5px;
+}
+
+.left {
+    float: left;
+    width: 55%;
+}
+
+#total-change {
+    font-style: italic;
+}
+
+.right {
+    float: right;
+    width: 45%;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.content-table {
+    overflow-y: auto;
+    height: 500px;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+.header {
+    margin: 10px;
+}
+
+.content-table thead th {
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
+.facebook {
+    background-color: #0d5cdb;
+    color: #fff;
+}
+
+.tiktok {
+    background-color: rgb(26, 23, 23);
+    color: #fff;
+}
+
+.youtube {
+    background-color: rgb(243, 47, 47);
+    color: #fff;
+}
+
+.insta {
+    background-image: linear-gradient(to top right, #f3b563, #9d2bab);
+    color: #fff;
+}
+
+h3 {
+    display: inline;
+}

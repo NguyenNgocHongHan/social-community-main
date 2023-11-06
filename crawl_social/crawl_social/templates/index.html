@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Followers Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>QuizNe's Followers Dashboard</h1>
+        <div class="left">
+            <div class="left-top">
+                <div class="platform platform-left-top facebook">
+                    <h2>GROUP</h2>
+                    <p>
+                    <h3 id="group-fb">{{data['group']}}</h3> members
+                    </p>
+                </div>
+                <div class="platform platform-left-top facebook">
+                    <h2>FANPAGE</h2>
+                    <p>
+                    <h3 id="fanpage-fb">{{data['fanpage']}}</h3> followers
+                    </p>
+                </div>
+                <div class="platform platform-left-top tiktok">
+                    <h2>TIK TOK</h2>
+                    <p>
+                    <h3 id="tiktok">{{data['tiktok']}}</h3> followers
+                    </p>
+                </div>
+                <div class="platform platform-left-top youtube">
+                    <h2>YOUTUBE</h2>
+                    <p>
+                    <h3 id="youtube">{{data['youtube']}}</h3> subcribers
+                    </p>
+                </div>
+                <div class="platform platform-left-top insta">
+                    <h2>INSTAGRAM</h2>
+                    <p>
+                    <h3 id="insta">{{data['instagram']}}</h3> followers
+                    </p>
+                </div>
+            </div>
+            <div class="left-bottom">
+                <div class="platform platform-left-bottom">
+                    <h2>TOTAL FOLLOWERS</h2>
+                    <p>
+                    <h3 id="total">{{data['total']}}</h3> / 50000
+                    </p>
+                    <h5 id="total-change">
+                        {% set totalChange = data['history'][-1][-6] | int - data['history'][-2][-6] | int %}
+                        {% if totalChange > 0 %}
+                        <p style="color: green;">(increase {{totalChange}})</p>
+                        {% elif totalChange == 0 %}
+                        <p style="color: black;">(unchanged)</p>
+                        {% else %}
+                        <p style="color: red;">(decrease {{totalChange}})</p>
+                        {% endif %}
+                    </h5>
+                </div>
+                <div class="platform platform-left-bottom">
+                    <h2>PERCENT percent</h2>
+                    <p>
+                    <h3 id="percent">{{data['percent']}}</h3> %
+                    </p>
+                </div>
+                <div>
+                    <button class="btn-reload" onclick="reload()"><i class="fa-solid fa-rotate-right"></i>
+                        Reload</button>
+                </div>
+            </div>
+        </div>
+        <div class="right group-right">
+            <div class="header">
+                <h2 class="title-table">History</h2>
+            </div>
+            <div class="content-table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th style="width: 12%;">Percent</th>
+                            <th style="width: 12%;">Total</th>
+                            <th style="width: 12%;">Group</th>
+                            <th style="width: 12%;">Fanpage</th>
+                            <th style="width: 12%;">Tik Tok</th>
+                            <th style="width: 12%;">Youtube</th>
+                            <th style="width: 12%;">Insta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data['history'][::-1] %}
+                        <tr>
+                            {% for col in row %}
+                            <td>{{ col}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        function reload() {
+            const groupFB = document.getElementById('group-fb');
+            const fanpageFB = document.getElementById('fanpage-fb');
+            const youtube = document.getElementById('youtube');
+            const instagram = document.getElementById('insta');
+            const tiktok = document.getElementById('tiktok');
+            const total = document.getElementById('total');
+            const percent = document.getElementById('percent');
+            const totalChange = document.getElementById('total-change');
+            groupFB.innerText = 'Loading...';
+            fanpageFB.innerText = 'Loading...';
+            youtube.innerText = 'Loading...';
+            instagram.innerText = 'Loading...';
+            tiktok.innerText = 'Loading...';
+            total.innerText = 'Loading...';
+            percent.innerText = 'Loading...';
+            totalChange.innerText = '(...)';
+
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
